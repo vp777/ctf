@@ -68,11 +68,11 @@ c=0
 basen=$(ip2n $bip)
 for ((i=0;i<$((1<<(32-mask)));i++)); do
     ip=$(n2ip $((basen+i)))
-	echo "Processing $ip"
-	$(helloIP $ip) &
-	((c++))
-	if [[ $c -eq $concurrencyLevel ]]; then
-		sleep $rest
-		c=0
-	fi
+    echo "Processing $ip"
+    $(helloIP $ip) &
+    ((c++))
+    if [[ $c -eq $concurrencyLevel ]]; then
+    	sleep $rest
+    	c=0
+    fi
 done
