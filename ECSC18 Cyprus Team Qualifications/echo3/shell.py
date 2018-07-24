@@ -24,7 +24,7 @@ class StrFmt:
         list=[]
         for i in range(nbytes/granularity):
           caddr = addr + i*granularity
-          cval = (value>>(i*self.arch*granularity))%(256**granularity)
+          cval = (value>>(8*i*granularity))%(256**granularity)
           n = cval - currently_written
           while n < 0: n+=256**granularity
           adjustfmt = "%0{}c".format(n) if n>0 else ""
