@@ -21,4 +21,4 @@ The pwn challenges were served over tcp:
 <br >
 
 	LD_LIBRARY_PATH=. socat -T 5 tcp-l:1234,reuseaddr,fork exec:bin
-Finally, echo and echo3 have much simpler solutions than those provided here.
+Finally, echo and echo3 have much simpler solutions (but still interesting) than those provided here.
