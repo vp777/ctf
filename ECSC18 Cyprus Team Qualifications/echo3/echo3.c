@@ -4,15 +4,13 @@
 
 #define BSIZE 25
 
-extern void print_flag();
-
 #define get_input(prompt, buffer, size) {	\
 	printf(prompt);							\
 	fflush(stdout);							\
 	int n=read(0, buffer, size-1);			\
 	if(n<1) return 0;						\
 	buffer[n]=0;							\
-}
+} while(0)
 
 
 int authenticated_user(){
@@ -28,6 +26,6 @@ int authenticated_user(){
 }
 
 int main(int argc, char *argv[]){
-	if(authenticated_user()) print_flag();
+	if(authenticated_user()) printf("1Sorry, user could not be authenticated\n");
 	else printf("Sorry, user could not be authenticated\n");
 }
