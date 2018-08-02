@@ -12,6 +12,7 @@
 	buffer[n]=0;							\
 } while(0)
 
+extern void print_flag();
 
 int authenticated_user(){
 	char username[BSIZE], password[BSIZE];
@@ -26,6 +27,6 @@ int authenticated_user(){
 }
 
 int main(int argc, char *argv[]){
-	if(authenticated_user()) printf("1Sorry, user could not be authenticated\n");
+	if(authenticated_user()) print_flag();
 	else printf("Sorry, user could not be authenticated\n");
 }
