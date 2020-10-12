@@ -1,0 +1,1 @@
+docker build -t ctf/ezwin:1909 .
