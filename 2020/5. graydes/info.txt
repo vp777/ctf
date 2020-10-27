@@ -1,0 +1,6 @@
+Original des implementation: https://github.com/tarequeh/DES
+Movfuscator: https://github.com/xoreaxeaxeax/movfuscator/
+
+For the side channel analysis, through the currently available tools for this task, this challenge should not be approachable (e.g. valgrind).
+Probably a custom debugger has to be written that will extract the signal through the huge amount of noise (e.g. monitor the custom stack structure of the movfuscator)
+Even though in theory should be possible, it should be interesting to see in practice if the movfuscated whitebox crypto can fall under the powers of SCA.
