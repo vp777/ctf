@@ -1,3 +1,5 @@
+#modified sample code from the paper, you may have to change CACHE_HIT_THRESHOLD
+
 #include <unistd.h>
 #include <stdio.h>
 #include <stdint.h>
