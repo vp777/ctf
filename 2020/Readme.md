@@ -6,14 +6,13 @@ Running the challenge:
 
 The application should be running on port 4444
 
-By default the container will run on hyper-v and is based on Windows Server Core 1909. Nevertheless it was tested on 1607 and 2004 so it's expected to run with every other version in between. 
+By default, the container will run on hyper-v and is based on Windows Server Core 1909. Nevertheless it was tested in 1607 and 2004 so it's expected to run with every other version in between.
 
 
 
 ## 2. exploitguard [pwn/linux]: 
 
-A vulnerable binary which is protected by a pintool implementing couple anti-exploitation techniques, like shadow stack and heap corruptions checks.
-
+A vulnerable binary that is protected by a pintool implementing some anti-exploitation techniques, like shadow stack and heap corruption checks.
 
 
 Running the challenge:
@@ -22,8 +21,7 @@ Running the challenge:
 
 Connect to port 7777 to interact with the application.
 
-Goal is to bypass that protections and execute the "win" function
-
+Goal is to exploit the hardened application and execute the "win" function
 
 
 ## 3. marksNspectre [spectre]:
@@ -35,7 +33,7 @@ Running the challenge:
 Then connect to port 1337 and give the contents of a c file  which will be compiled and linked against the libmns library. The function named "user_main()" from the user provided c code will then get executed.
 Goal is to extract the contents of gdata.flag
 
-Note, you are not meant to attack the sandbox but it should still be interesting if possible finding a way around it.
+Note, you are not meant to attack the sandbox but it should still be interesting if possible to find a way around it.
 
 Referenes:
 
