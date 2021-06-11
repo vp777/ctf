@@ -1,2 +1,2 @@
 Goal is to exploit the vulnerable driver from low integrity and gain SYSTEM privileges. 
-Tested on Windows 21h1 should work at least since 1709.
+Tested on Windows 21H1, the vulnerability should be exploitable on every windows version with named pipes support
