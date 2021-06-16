@@ -1,7 +1,9 @@
+
 #include <ntddk.h>
 #include <wdm.h>
 
 #define IOCTL_ALLOC CTL_CODE(FILE_DEVICE_UNKNOWN, 0x800, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define IOCTL_TOUGHER_ALLOC CTL_CODE(FILE_DEVICE_UNKNOWN, 0x801, METHOD_BUFFERED, FILE_ANY_ACCESS)
 
 DRIVER_UNLOAD DriverUnload;
 DRIVER_DISPATCH IrpNotImplementedHandler;
@@ -66,14 +68,17 @@ NTSTATUS DriverEntry(IN PDRIVER_OBJECT DriverObject, IN PUNICODE_STRING Registry
 
 NTSTATUS Alloc(size_t Size)
 {
-	bool EndWithSpace = 0;
-	if (Size % 2) {
-		EndWithSpace = 1;
-		Size--;
-	}
 	char* buf = (char*)ExAllocatePoolWithTag(NonPagedPoolNx, Size, 'AAAA');
-	if(buf && EndWithSpace)
-		buf[Size] = ' '; //use space to simplify things
+	for (int i = 0; i <= Size && buf; i++)
+		buf[i] = ' ';
+	return STATUS_SUCCESS;
+}
+
+NTSTATUS TougherAlloc(size_t Size)
+{
+	char* buf = (char*)ExAllocatePoolWithTag(NonPagedPoolNx, Size, 'AAAA');
+	for (int i = 0; i <= Size && buf; i++)
+		buf[i] = 0;
 	return STATUS_SUCCESS;
 }
 
@@ -86,16 +91,16 @@ NTSTATUS IrpDeviceIoCtlHandler(IN PDEVICE_OBJECT DeviceObject, IN PIRP Irp) {
 	UNREFERENCED_PARAMETER(DeviceObject);
 
 	IrpSp = IoGetCurrentIrpStackLocation(Irp);
+	IoControlCode = IrpSp->Parameters.DeviceIoControl.IoControlCode;
 
 	if (IrpSp) {
-        
-        IoControlCode = IrpSp->Parameters.DeviceIoControl.IoControlCode;
 		switch (IoControlCode) {
-
 		case IOCTL_ALLOC:
 			Status = Alloc(*(size_t*)Irp->AssociatedIrp.SystemBuffer);
 			break;
-
+		case IOCTL_TOUGHER_ALLOC:
+			Status = TougherAlloc(*(size_t*)Irp->AssociatedIrp.SystemBuffer);
+			break;
 		default:
 			Status = STATUS_NOT_SUPPORTED;
 			break;
